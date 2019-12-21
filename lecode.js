@@ -1,6 +1,7 @@
 
 var lesetats=[];
 var lesattributs=[];
+
 var lesetatsinit=[];
 var lesetatsfinal=[];
 function recupval() 
