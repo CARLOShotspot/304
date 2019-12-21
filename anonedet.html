@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html>
+  <head>
+      <meta charset="utf-8"/>
+      <title>automates</title>
+      
+      <link rel="stylesheet" href="materialize.css">
+      <script src="lecode.js"></script>
+      <script src="materialize.js"></script>
+      <script src="vue.js"></script>
+  </head>
+  <body>
+    <header>
+      <nav>
+        <div class="nav-wrapper">
+          <a href="#" class="brand-logo">AUTOMATES</a>
+          <ul id="nav-mobile" class="right hide-on-med-and-down">
+            <li><a href="sass.html">Sass</a></li>
+            <li><a href="badges.html">Components</a></li>
+            <li><a href="collapsible.html">JavaScript</a></li>
+          </ul>
+        </div>
+      </nav>
+                        
+    </header>
+    
+    <!--<div class="row">
+      <form class="col s4">
+        <div class="row">
+          <div class="input-field col s6">
+            <input pl      <script src="materialize.js"></script>
+aceholder="Placeholder" id="first_name" type="text" class="validate">
+            <label for="first_name">First Name</label>
+          </div>
+          <div class="input-field col s6">
+            <input id="last_name" type="text" class="validate">
+            <label for="last_name">Last Name</label>
+          </div>
+        </div>
+        <div class="row">
+          <div class="input-field col s12">
+            <input disabled value="I am not editable" id="disabled" type="text" class="validate">
+            <label for="disabled">Disabled</label>
+          </div>
+        </div>
+        <div class="row">
+          <div class="input-field col s12">
+            <input id="password" type="password" class="validate">
+            <label for="password">Password</label>
+          </div>
+        </div>
+        <div class="row">
+          <div class="input-field col s12">
+            <input id="email" type="email" class="validate">
+            <label for="email">Email</label>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col s12">
+            This is an inline input field:
+            <div class="input-field inline">
+              <input id="email" type="email" class="validate">
+              <label for="email" data-error="wrong" data-success="right">Email</label>
+            </div>
+          </div>
+        </div>
+      </form>
+    </div>
+  -->
+    <div class="lesdiv">
+      <h3 id="test" style="text-align: center;">Remplissez correctement ce qui suis:</h3>
+      <div class="mesdiv" id="nombretat" style="display: block;">
+        <p>Indiquez le nombre d'états de l'automate:</p>
+        <input id="vnombretat"  class="validate" style="text-align: center;">
+        <button class="waves-effect waves-light btn" id="etape1" onclick="recupval()">valider</button>
+      </div>
+      <div class="mesdiv" id="tabl" style="display: none;">
+        <p>Sur la première ligne, entrez les Etats</p>
+        <p>Les attributs d'une transition sont séparé par un point (ex:  a.b)</p>
+        <table id="tableau" style="text-align: center;"></table>
+        <button class="waves-effect waves-light btn" id="etape2" onclick="etats_in_fin()">valider</button>
+      </div>
+      <div class="mesdiv" id="in_fin" style="display: none;">
+        <div class="col s12">
+          <h3 class="header" style="text-align: center;">Etats initiaux</h3>
+          <div class="card horizontal">
+            <div class="card-image">
+              <img src="content/accessibilit-exemple.jpg">
+            </div>
+            <div class="card-stacked">
+              <div id="init" class="card-content">
+                <p>Sélectionez les etats initiaux</p>
+              </div>
+            </div>
+          </div>
+        </div>
+          
+        <div class="col s12">
+          <h3 class="header" style="text-align: center;">Etats finaux</h3>
+          <div class="card horizontal">
+            <div class="card-image">
+              <img src="content/poly114.png">
+            </div>
+            <div class="card-stacked">
+              <div id="final" class="card-content">
+                <p>Sélectionez les etats finaux</p>
+              </div>
+            </div>
+          </div>
+        </div>
+        <button class="waves-effect waves-light btn" onclick="typeautomate()">valider</button>
+      </div>
+      <div id="tautomate" style="display: none; text-align: center;">
+        <a style="display: none;" class="btn-floating btn-large waves-effect waves-light red" id="name1"><i id="named1" class="material-icons" onclick="nom(1,'AFN')">AFN</i></a>
+        <a style="display: none;" class="btn-floating btn-large waves-effect waves-light red" id="name2"><i id="named2" class="material-icons" onclick="nom(2,'£-AFN')">£-AFN</i></a>
+        <a style="display: none;" class="btn-floating btn-large waves-effect waves-light red" id="name3"><i id="named3" class="material-icons" onclick="nom(3,'AFD')">AFD</i></a>
+        <span class="row" style="display: none" id="validnomauto">
+          <input  id="nomdeautomate"  class="validate" style="text-align: center;">
+          <button  class="waves-effect waves-light btn" onclick="tester()">valider</button>  
+        </span>
+      </div>
+      <div id="zoneAffichAuto" style="display: none; text-align: center;">
+        <table>
+          <tr><td>Attributs</td><td id="affAlphabet"></td></tr>
+          <tr><td>Etats</td><td id="affEtats"></td></tr>
+          <tr><td>Etats initiaux</td><td id="affEtatsInit"></td></tr>
+          <tr><td>Etats finaux</td><td id="affEtatsFin"></td></tr>
+          <tr><td>Fonction de transition<div id="affonctrans"><input placeholder="attribut" id="attri" class="affonctrans" onchange="afffonctransi()"><input placeholder="etat" id="eta" class="affonctrans" onchange="afffonctransi()"></div><div id="acoteaffonctrans"><button onclick="afffonctransi()">FONCTION</button></div></td><td id="affFoncTransi"></td></tr>
+        </table>
+        <button onclick="afn_afd()" class="waves-effect waves-light btn">obtenir son AFD</button>
+      </div>
+      <div id="afn_et_afd_ensemble" style="display: none;">
+        <div class="col s12">
+          <h3 class="header" style="text-align: center;">AFN</h3>
+          <div class="card horizontal">
+            <div class="card-stacked">
+              <div id="afntab" class="card-content">
+                <table id="tafntab"><tr id="afnligne0"><td></td></tr></table>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col s12">
+          <h3 class="header" style="text-align: center;"></h3>
+          <div class="card horizontal">
+            <div class="card-stacked">
+              fonctransition
+              <div id="afdtab" class="card-content">
+                  <table id="tafdtab"><tr id="afdligne0" ><td style="color:white; background-color: gray;"></td></tr></table>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+                
+  </body>
+
+
+
+
+
+</html>
